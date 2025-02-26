@@ -25,9 +25,10 @@ class Televisao
     private const float TAMANHO_MINIMO = 22;
     private const float TAMANHO_MAXIMO = 80;
 
-    private int VOLUME_MAXIMO = 100;
-    private int VOLUME_MINIMO = 0;
-    private int VOLUME_PADRAO = 10;
+    private const int VOLUME_MAXIMO = 100;
+    private const int VOLUME_MINIMO = 0;
+    private const int VOLUME_PADRAO = 10;
+    private int _UltimoVolume = VOLUME_PADRAO;
 
 
     //Get: permite que seja executada a 
@@ -68,5 +69,22 @@ class Televisao
         {
             Console.WriteLine("Tv já está no volume minimo permitido");
         }
+    }
+
+    // 1 botao mudo - toggle (on/off)
+    // volume = x; volume = 0; volume = x;
+    public void AlterarModoMudo()
+    {
+        if(Volume > VOLUME_MINIMO)
+            {
+               _UltimoVolume = Volume;
+               Volume = VOLUME_MINIMO;
+            Console.WriteLine("A TV está no modo MUTE");
+            }
+            else
+            {
+                Volume = _UltimoVolume;
+                Console.WriteLine($"O volume da TV é: {Volume}.");
+            }
     }
 }
